@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package questions;
+
+message Question {
+    string id = 1;
+    string type = 2;
+    string title = 3;
+}
+
+message SearchRequest {
+    string query = 1;
+    int32 page = 2;
+}
+
+message SearchResponse {
+    repeated Question questions = 1;
+    int32 total = 2;
+}
+
+service QuestionService {
+    rpc SearchQuestions (SearchRequest) returns (SearchResponse);
+}
